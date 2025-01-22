@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn # Yarn으로 종속성 설치
+    build:
+      commands:
+        - yarn build:next # 사용자 지정 Next.js 빌드 명령 실행
+  artifacts:
+    baseDirectory: .next # Next.js의 기본 빌드 산출물 디렉토리
+    files:
+      - '**/*' # 배포할 파일 패턴
+  cache:
+    paths:
+      - node_modules/**/* # 종속성 캐시
+      - .next/cache/**/* # Next.js 캐시
